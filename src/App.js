@@ -1,3 +1,4 @@
+// import { Children } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import Post from "./Components/Post";
@@ -5,38 +6,59 @@ import Post from "./Components/Post";
 import SideMenu from "./Components/SideMenu";
 
 function App() {
+  // Posts
+  const posts = [
+    {
+      id: 1,
+      title: "Title 1",
+      email: "test1@cc.com",
+      text: `1- totam ratione voluptas quod exerc
+      quasi aliquam eligendi, placeat qui corporis`,
+      children: [<button key="001">Click Me</button>],
+    },
+    {
+      id: 2,
+      title: "Title 2",
+      email: "test2@cc.com",
+      text: `2- totam ratione voluptas quod exerc
+    quasi aliquam eligendi, placeat qui corporis`,
+    },
+    {
+      id: 3,
+      title: "Title 3",
+      email: "test3@cc.com",
+      text: `3- totam ratione voluptas quod exerc quasi aliquam eligendi, placeat qui corporis`,
+      children: [
+        <div key="002">
+          <h2>test</h2>
+          <span>😀🌴😊✅</span>
+        </div>,
+      ],
+    },
+    {
+      id: 4,
+      title: "Title 4",
+      email: "test4@test.com",
+      text: `4- totam ratione voluptas quod exerc quasi aliquam eligendi, placeat qui corporis`,
+      children: [
+        <h1 key="003" style={{ color: "red" }}>
+          I'm a children!!
+        </h1>,
+      ],
+    },
+  ];
+  // postsList
+  const postsList = posts.map((post) => (
+    <Post key={post.id} title={post.title} email={post.email} text={post.text}>
+      {post.children}
+    </Post>
+  ));
   return (
     <div className="App">
       <Header></Header>
 
       <div className="content">
-        <div className="posts-container">
-          <Post
-            title={"Title 1"}
-            email={"test@cc1.com"}
-            text={`1- totam ratione voluptas quod exerc
-                  quasi aliquam eligendi, placeat qui corporis`}
-          ></Post>
-          <Post
-            title={"Title 2"}
-            email={"test@cc2.com"}
-            text={`2- totam ratione voluptas quod exerc
-                quasi aliquam eligendi, placeat qui corporis`}
-          >
-            {/* Send JSX As a Props */}
-            <div style={{ background: "red" }}>
-              <h2>Sub TEXT (JSX AS A PROP) !!</h2>
-              <h1>Hello world!</h1>
-            </div>
-            {/* ######################## */}
-          </Post>
-          <Post
-            // title={"Title 3"}
-            email={"test@cc3.com"}
-            text={`3- totam ratione voluptas quod exerc
-                quasi aliquam eligendi, placeat qui corporis`}
-          ></Post>
-        </div>
+        <div className="posts-container">{postsList}</div>
         <SideMenu></SideMenu>
       </div>
     </div>
