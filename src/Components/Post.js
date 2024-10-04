@@ -1,15 +1,12 @@
 import "../App.css";
-export default function Post() {
+export default function Post({ title, email, text }) {
+  console.log(title);
   return (
     <div className="post">
-      <h1>Title</h1>
-      <span>Email</span>
+      <h1>{title}</h1>
+      <span>{email}</span>
       <hr></hr>
-      <p>
-        {" "}
-        totam ratione voluptas quod exercitationem fuga. Possimus quis earum
-        veniam quasi aliquam eligendi, placeat qui corporis!{" "}
-      </p>
+      <p>{text}</p>
     </div>
   );
 }

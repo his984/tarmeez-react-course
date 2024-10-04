@@ -11,9 +11,24 @@ function App() {
 
       <div className="content">
         <div className="posts-container">
-          <Post></Post>
-          <Post></Post>
-          <Post></Post>
+          <Post
+            title={"Title 1"}
+            email={"test@cc1.com"}
+            text={`1- totam ratione voluptas quod exerc
+                  quasi aliquam eligendi, placeat qui corporis`}
+          ></Post>
+          <Post
+            title={"Title 2"}
+            email={"test@cc2.com"}
+            text={`2- totam ratione voluptas quod exerc
+                quasi aliquam eligendi, placeat qui corporis`}
+          ></Post>
+          <Post
+            title={"Title 3"}
+            email={"test@cc3.com"}
+            text={`3- totam ratione voluptas quod exerc
+                quasi aliquam eligendi, placeat qui corporis`}
+          ></Post>
         </div>
         <SideMenu></SideMenu>
       </div>
