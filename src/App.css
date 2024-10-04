@@ -2,49 +2,12 @@
 .App {
   text-align: center;
 }
-/* Header Style */
-.header {
-  background-color: teal;
-  color: white;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* content */
-.content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: 100%;
-  padding: 15px;
-}
-/* Posts Container */
-.posts-container {
-  width: 60%;
-}
-/* Post Style */
-.post {
-  border: solid 2px black;
-  padding: 10px;
-  margin: 15px;
-}
-/* SideMenu */
-.sideMenu {
-  border: solid 2px black;
-  width: 25%;
-  height: 400px;
-  margin: 15px;
-  padding: 15px;
-}
-/* Btn Style */
-.btn {
+button {
+  margin: 40px;
   width: 150px;
-  height: 30px;
-  font-size: 15px;
+  height: 40px;
+  font-size: 20px;
   border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  margin: 10px;
-  background-color: rgb(224, 223, 221);
+  border: solid 1px black;
+  background-color: rgb(255, 255, 255);
 }
