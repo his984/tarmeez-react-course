@@ -22,9 +22,16 @@ function App() {
             email={"test@cc2.com"}
             text={`2- totam ratione voluptas quod exerc
                 quasi aliquam eligendi, placeat qui corporis`}
-          ></Post>
+          >
+            {/* Send JSX As a Props */}
+            <div style={{ background: "red" }}>
+              <h2>Sub TEXT (JSX AS A PROP) !!</h2>
+              <h1>Hello world!</h1>
+            </div>
+            {/* ######################## */}
+          </Post>
           <Post
-            title={"Title 3"}
+            // title={"Title 3"}
             email={"test@cc3.com"}
             text={`3- totam ratione voluptas quod exerc
                 quasi aliquam eligendi, placeat qui corporis`}
