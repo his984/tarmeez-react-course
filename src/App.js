@@ -4,23 +4,23 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <MyButton></MyButton>
+      <MyInput></MyInput>
     </div>
   );
 }
 
 export default App;
 
-function MyButton() {
-  console.log("Render!");
-  const [name, setName] = useState("Hisham");
-  function buttonClicked() {
-    setName(name === "Hisham" ? "Ali" : "Hisham");
+function MyInput() {
+  const [inputValue, setInputValue] = useState("");
+  function handleInputChange(event) {
+    console.log(event);
+    setInputValue(event.target.value);
   }
   return (
     <div>
-      <button onClick={buttonClicked}>Click Me</button>
-      <h1>{name}</h1>
+      <label>Input</label>
+      <input value={inputValue} onChange={handleInputChange} />
     </div>
   );
 }
