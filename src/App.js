@@ -2,51 +2,66 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-    return (
+  return (
     <div className="App">
       <MyForm></MyForm>
     </div>
   );
 }
 
-export default App; 
+export default App;
 
 function MyForm() {
-  // The MyForm component which handles a simple form with name and email inputs.
-  // useState hook is used to create formInputs state and setFormInput function to update the state.
-  // The state is initialized with an object containing empty strings for "name" and "email" fields.
-  const [formInputs, setFormInput] = useState({ name: "", email: "" });
+  const [formInputs, setFormInput] = useState({
+    name: "",
+    email: "",
+    generalInfo: "",
+    isStudent: false,
+  });
+  //
+  function handleCheckBoxChanged(event) {
+    setFormInput({ ...formInputs, isStudent: event.target.checked });
+  }
 
   return (
     <form
       onSubmit={(e) => {
-        e.preventDefault(); // Prevent the default form submission behavior to avoid page reload.
-        console.log(formInputs); // Log the formInputs state to the console when the form is submitted.
+        e.preventDefault();
+        console.log(formInputs);
       }}
     >
-      {/* Label for the "name" input field */}
       <label>Name</label>
-      {/* Input field for the "name" value */}
       <input
-        value={formInputs.name} // Set the value of the input to the "name" property from the formInputs state.
+        value={formInputs.name}
         onChange={(event) => {
-          // Update the formInputs state when the user types into the input.
-          // Spread the current formInputs state and update only the "name" property.
           setFormInput({ ...formInputs, name: event.target.value });
         }}
       />
-      <hr></hr> 
-      {/* Label for the "email" input field */}
+      <hr></hr>
+
       <label>Email</label>
-      {/* Input field for the "email" value */}
+
       <input
-        value={formInputs.email} // Set the value of the input to the "email" property from the formInputs state.
+        value={formInputs.email}
         onChange={(event) => {
-          // Update the formInputs state when the user types into the input.
-          // Spread the current formInputs state and update only the "email" property.
           setFormInput({ ...formInputs, email: event.target.value });
         }}
       />
+      <hr></hr>
+      <label>General Info</label>
+      <textarea
+        value={formInputs.generalInfo}
+        onChange={(event) => {
+          setFormInput({ ...formInputs, generalInfo: event.target.value });
+        }}
+      />
+      <hr></hr>
+      <label>Are you student?</label>
+      <input
+        type="checkbox"
+        checked={formInputs.isStudent}
+        onChange={handleCheckBoxChanged}
+      ></input>
       <hr></hr>
       <button type="submit">Submit</button>
     </form>

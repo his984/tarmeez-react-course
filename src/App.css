@@ -3,7 +3,7 @@
   text-align: center;
 }
 button {
-  margin: 40px;
+  margin: 10px;
   width: 150px;
   height: 40px;
   font-size: 20px;
@@ -11,14 +11,21 @@ button {
   border: solid 1px black;
   background-color: rgba(241, 235, 235, 0.626);
 }
-input{ 
-  margin: 15px;
+input {
+  margin: 10px;
   height: 20px;
   font-size: 15px;
 }
-form{
-  border: solid 2px black ;
+form {
+  border: solid 2px black;
   width: 300px;
   margin: 50px;
   padding: 15px;
+}
+textarea {
+  margin: 10px;
+  padding: 10px;
+}
+label {
+  display: block;
 }
