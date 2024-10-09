@@ -12,17 +12,7 @@ function App() {
 export default App;
 
 function MyForm() {
-  const [formInputs, setFormInput] = useState({
-    name: "",
-    email: "",
-    generalInfo: "",
-    isStudent: false,
-  });
-  //
-  function handleCheckBoxChanged(event) {
-    setFormInput({ ...formInputs, isStudent: event.target.checked });
-  }
-
+  const [formInputs, setFormInput] = useState({ city: "", status: "" });
   return (
     <form
       onSubmit={(e) => {
@@ -30,38 +20,39 @@ function MyForm() {
         console.log(formInputs);
       }}
     >
-      <label>Name</label>
-      <input
-        value={formInputs.name}
-        onChange={(event) => {
-          setFormInput({ ...formInputs, name: event.target.value });
+      <select
+        value={formInputs.city}
+        onChange={(e) => {
+          setFormInput({ ...formInputs, city: e.target.value });
         }}
-      />
+      >
+        <option>LUND</option>
+        <option>MALMO</option>
+        <option>DAMASCUS</option>
+      </select>
       <hr></hr>
-
-      <label>Email</label>
-
-      <input
-        value={formInputs.email}
-        onChange={(event) => {
-          setFormInput({ ...formInputs, email: event.target.value });
-        }}
-      />
-      <hr></hr>
-      <label>General Info</label>
-      <textarea
-        value={formInputs.generalInfo}
-        onChange={(event) => {
-          setFormInput({ ...formInputs, generalInfo: event.target.value });
-        }}
-      />
-      <hr></hr>
-      <label>Are you student?</label>
-      <input
-        type="checkbox"
-        checked={formInputs.isStudent}
-        onChange={handleCheckBoxChanged}
-      ></input>
+      <div>
+        <input
+          value="student"
+          type="radio"
+          name="status"
+          checked={formInputs.status === "student"}
+          onChange={(e) => {
+            setFormInput({ ...formInputs, status: e.target.value });
+          }}
+        />
+        Student
+        <input
+          value="teacher"
+          type="radio"
+          name="status"
+          checked={formInputs.status === "teacher"}
+          onChange={(e) => {
+            setFormInput({ ...formInputs, status: e.target.value });
+          }}
+        />
+        Teacher
+      </div>
       <hr></hr>
       <button type="submit">Submit</button>
     </form>
