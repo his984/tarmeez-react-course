@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <MyForm></MyForm>
+      <MyForm />
     </div>
   );
 }
@@ -13,48 +13,62 @@ export default App;
 
 // My Form
 function MyForm() {
-  const [addNewDevice, setAddNewDevice] = useState("");
-  const [newDevice, setNewDevice] = useState([
+  // Devices List
+  const [devices, setDevices] = useState([
     "iPhone 12",
     "Samsung Galaxy S21",
     "Google Pixel 5",
     "OnePlus 9",
     "Xiaomi Mi 11",
   ]);
-  // Function handle adding new device
+
+  // New device input
+  const [newDeviceName, setNewDeviceName] = useState("");
+
+  // Function to handle adding new device
   function handleAddNewDevice() {
-    if (addNewDevice.trim() !== "") {
-      setNewDevice([...newDevice, addNewDevice]);
-      setAddNewDevice(""); // Clear input field after adding
+    if (newDeviceName.trim() !== "") {
+      setDevices((prevDevices) => [...prevDevices, newDeviceName]);
+      setNewDeviceName(""); // Clear input field after adding
     }
   }
+
+  // Function to handle deleting a device
+  function handleDeleteDevice(deviceToDelete) {
+    setDevices(devices.filter((device) => device !== deviceToDelete));
+  }
+
   // Devices list
-  const devicesList = newDevice.map((device) => {
+  const devicesList = devices.map((device) => {
     return (
-      <option key={device} value={device}>
-        {device}
-      </option>
+      <div className="items" key={device}>
+        <span>{device}</span>
+        <button
+          style={{ width: "50px" }}
+          type="button"
+          onClick={() => handleDeleteDevice(device)}
+        >
+          Del
+        </button>
+      </div>
     );
   });
 
   return (
-    <div>
-      <label>
-        Devices list:
-        <select>{devicesList}</select>
-      </label>
+    <div className="container">
+      <h1>Devices List</h1>
+      <div>{devicesList}</div>
 
-      <label>
-        Add new device
-        <input
-          type="text"
-          value={addNewDevice}
-          onChange={(e) => {
-            return setAddNewDevice(e.target.value);
-          }}
-        />
-      </label>
-      <button onClick={handleAddNewDevice}>Add new device</button>
+      <h2>Add New Device</h2>
+      <input
+        type="text"
+        value={newDeviceName}
+        onChange={(e) => setNewDeviceName(e.target.value)}
+      />
+
+      <button onClick={handleAddNewDevice} style={{ marginLeft: "10px" }}>
+        Add Device
+      </button>
     </div>
   );
 }

@@ -1,10 +1,13 @@
 /* App Style */
 .App {
+  display: flex;
   text-align: center;
+  justify-content: center;
 }
-div {
-  margin: 50px;
-  height: 200px;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 label {
@@ -12,8 +15,7 @@ label {
   margin: 10px;
 }
 
-input,
-select {
+input {
   width: 150px;
   height: 25px;
   border-radius: 10px;
@@ -27,4 +29,22 @@ button {
   border-radius: 5px;
   background-color: rgb(212, 208, 208);
   border: none;
+  margin: 5px;
+}
+
+span {
+  margin: 10px;
+}
+.items {
+  width: 250px;
+  display: flex;
+  justify-content: flex-end;
+  border: dotted 1px black;
+  margin-top: 5px;
+}
+h1 {
+  margin: 5px;
+}
+h2 {
+  margin: 5px;
 }
