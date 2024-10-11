@@ -25,17 +25,37 @@ function MyForm() {
   // New device input
   const [newDeviceName, setNewDeviceName] = useState("");
 
-  // Function to handle adding new device
-  function handleAddNewDevice() {
+  // Device being edited
+  const [editingDevice, setEditingDevice] = useState(null);
+
+  // Function to handle adding or updating a device
+  function handleAddOrUpdateDevice() {
     if (newDeviceName.trim() !== "") {
-      setDevices((prevDevices) => [...prevDevices, newDeviceName]);
-      setNewDeviceName(""); // Clear input field after adding
+      if (editingDevice !== null) {
+        // Update the existing device
+        setDevices((prevDevices) =>
+          prevDevices.map((device) =>
+            device === editingDevice ? newDeviceName : device
+          )
+        );
+        setEditingDevice(null); // Reset editing mode
+      } else {
+        // Add new device
+        setDevices((prevDevices) => [...prevDevices, newDeviceName]);
+      }
+      setNewDeviceName(""); // Clear input field after adding or updating
     }
   }
 
   // Function to handle deleting a device
   function handleDeleteDevice(deviceToDelete) {
     setDevices(devices.filter((device) => device !== deviceToDelete));
+  }
+
+  // Function to handle editing a device
+  function handleEditDevice(device) {
+    setNewDeviceName(device); // Set input field to the device name
+    setEditingDevice(device); // Set the device to be edited
   }
 
   // Devices list
@@ -50,6 +70,14 @@ function MyForm() {
         >
           Del
         </button>
+        {/* Edit Button */}
+        <button
+          style={{ width: "50px" }}
+          type="button"
+          onClick={() => handleEditDevice(device)}
+        >
+          Edit
+        </button>
       </div>
     );
   });
@@ -59,15 +87,15 @@ function MyForm() {
       <h1>Devices List</h1>
       <div>{devicesList}</div>
 
-      <h2>Add New Device</h2>
+      <h2>{editingDevice ? "Edit Device" : "Add New Device"}</h2>
       <input
         type="text"
         value={newDeviceName}
         onChange={(e) => setNewDeviceName(e.target.value)}
       />
 
-      <button onClick={handleAddNewDevice} style={{ marginLeft: "10px" }}>
-        Add Device
+      <button onClick={handleAddOrUpdateDevice} style={{ marginLeft: "10px" }}>
+        {editingDevice ? "Update Device" : "Add Device"}
       </button>
     </div>
   );
