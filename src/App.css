@@ -1,7 +1,10 @@
 /* App Style */
 .App {
-  display: flex;
+  /* display: flex;
   text-align: center;
-  justify-content: center;
-  padding: 50px;
+  justify-content: center; */
+  padding: 20px;
+}
+button {
+  margin: 15px;
 }

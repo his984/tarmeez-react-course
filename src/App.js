@@ -5,6 +5,8 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+      <h1>Counters that update separately</h1>
+      <MyButton></MyButton>
       <MyButton></MyButton>
     </div>
   );
