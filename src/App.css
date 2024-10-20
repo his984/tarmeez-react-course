@@ -4,8 +4,8 @@ body {
 }
 /* App */
 .App {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +42,8 @@ h1 {
 /* Input */
 input {
   padding: 5px;
-  width: calc(100% -5px);
+  width: 100%;
+  box-sizing: border-box;
   border-radius: 5px;
   border: none;
 }
@@ -94,4 +95,30 @@ select {
   box-sizing: border-box;
   padding: 2px 2px;
   border-radius: 5px;
+}
+/* Loan Form */
+.loan-form {
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Modal Style */
+#modal {
+  color: green;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.53);
+  /* padding: 15px; */
+  border-radius: 10px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* modal-content */
+#modal-content {
+  background-color: rgb(224, 215, 215);
+  padding: 15px;
+  border-radius: 10px;
 }
