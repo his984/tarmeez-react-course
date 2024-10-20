@@ -18,7 +18,19 @@ function LoanForm() {
     name: "test",
     phoneNumber: "",
     age: "",
+    isEmployee: false,
+    salaryRange: "",
   });
+  // handleFormSubmit
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log("Submitted!!");
+  }
+  // btnIsDisabled
+  const btnIsDisabled =
+    loanInputs.name === "" ||
+    loanInputs.age === "" ||
+    loanInputs.phoneNumber === "";
   return (
     // Loan form container
     <div className="loan-form">
@@ -69,13 +81,30 @@ function LoanForm() {
         </div>
         {/* Are you employee  */}
         <div className="employee-check">
-          <input type="checkbox"></input>
+          <input
+            type="checkbox"
+            checked={loanInputs.isEmployee}
+            onChange={(e) => {
+              setLoanInput({
+                ...loanInputs,
+                isEmployee: e.target.checked,
+              });
+            }}
+          ></input>
           <label>Employee *</label>
         </div>
         {/* Salary */}
         <div className="select-salary">
           <label>Salary * </label>
-          <select>
+          <select
+            value={loanInputs.salaryRange}
+            onChange={(e) => {
+              setLoanInput({
+                ...loanInputs,
+                salaryRange: e.target.value,
+              });
+            }}
+          >
             <option>Option1</option>
             <option>Option2</option>
             <option>Option3</option>
@@ -84,7 +113,13 @@ function LoanForm() {
         {/* HR */}
         <hr></hr>
         {/* Button */}
-        <button>Submit</button>
+        <button
+          className={btnIsDisabled ? "disabled" : ""}
+          disabled={btnIsDisabled}
+          onClick={handleFormSubmit}
+        >
+          Submit
+        </button>
       </form>
       {/* Modal */}
       {/* <Modal></Modal> */}
