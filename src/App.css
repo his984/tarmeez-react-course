@@ -107,7 +107,7 @@ select {
 #modal {
   color: green;
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.53);
+  background-color: rgb(20 15 15 / 53%);
   /* padding: 15px; */
   border-radius: 10px;
   width: 100vw;

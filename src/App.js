@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-// import Modal from "./Components/Modal";
+import Modal from "./Components/Modal";
 
 // APP
 function App() {
@@ -14,6 +14,8 @@ export default App;
 
 // Loan Form
 function LoanForm() {
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const [loanInputs, setLoanInput] = useState({
     name: "test",
     phoneNumber: "",
@@ -24,16 +26,30 @@ function LoanForm() {
   // handleFormSubmit
   function handleFormSubmit(event) {
     event.preventDefault();
+    setErrorMessage(null);
     console.log("Submitted!!");
+    const { age, phoneNumber } = loanInputs;
+    if (age < 18 || age > 100) {
+      setErrorMessage("The age is not allowed!");
+    } else if (phoneNumber.length < 10 || phoneNumber.length > 12) {
+      setErrorMessage("Phone number format is incorrect");
+    }
+    setShowModal(true);
   }
   // btnIsDisabled
   const btnIsDisabled =
     loanInputs.name === "" ||
     loanInputs.age === "" ||
     loanInputs.phoneNumber === "";
+  // handle div click
+  function handleDivClick() {
+    if (showModal) {
+      setShowModal(false);
+    }
+  }
   return (
     // Loan form container
-    <div className="loan-form">
+    <div className="loan-form" onClick={handleDivClick}>
       {/* form */}
       <form>
         {/* H1 */}
@@ -122,7 +138,7 @@ function LoanForm() {
         </button>
       </form>
       {/* Modal */}
-      {/* <Modal></Modal> */}
+      <Modal errorMessage={errorMessage} isVisible={showModal}></Modal>
     </div>
   );
 }
