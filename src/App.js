@@ -1,144 +1,61 @@
 import { useState } from "react";
+import { places } from "./data.js";
+import { getImageUrl } from "./utils.js";
 import "./App.css";
-import Modal from "./Components/Modal";
 
 // APP
 function App() {
+  const [isLarge, setIsLarge] = useState(false);
+  const imageSize = isLarge ? 150 : 100;
   return (
     <div className="App">
-      <LoanForm></LoanForm>
+      <label>
+        <input
+          type="checkbox"
+          checked={isLarge}
+          onChange={(e) => {
+            setIsLarge(e.target.checked);
+          }}
+        />
+        Use large images
+      </label>
+      <hr />
+      <List imageSize={imageSize}></List>
     </div>
   );
 }
 export default App;
 
-// Loan Form
-function LoanForm() {
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [loanInputs, setLoanInput] = useState({
-    name: "test",
-    phoneNumber: "",
-    age: "",
-    isEmployee: false,
-    salaryRange: "",
-  });
-  // handleFormSubmit
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    setErrorMessage(null);
-    console.log("Submitted!!");
-    const { age, phoneNumber } = loanInputs;
-    if (age < 18 || age > 100) {
-      setErrorMessage("The age is not allowed!");
-    } else if (phoneNumber.length < 10 || phoneNumber.length > 12) {
-      setErrorMessage("Phone number format is incorrect");
-    }
-    setShowModal(true);
-  }
-  // btnIsDisabled
-  const btnIsDisabled =
-    loanInputs.name === "" ||
-    loanInputs.age === "" ||
-    loanInputs.phoneNumber === "";
-  // handle div click
-  function handleDivClick() {
-    if (showModal) {
-      setShowModal(false);
-    }
-  }
+// List
+
+function List({ imageSize }) {
+  const listItems = places.map((place) => (
+    <li key={place.id}>
+      <Place place={place} imageSize={imageSize} />
+    </li>
+  ));
+  return <ul>{listItems}</ul>;
+}
+
+function Place({ place, imageSize }) {
   return (
-    // Loan form container
-    <div className="loan-form" onClick={handleDivClick}>
-      {/* form */}
-      <form>
-        {/* H1 */}
-        <h1>Loan Request Form</h1>
-        {/* HR */}
-        <hr></hr>
-        {/* Name */}
-        <div className="form-row">
-          <label>Name * </label>
-          <input
-            type="text"
-            value={loanInputs.name}
-            onChange={(e) => {
-              setLoanInput({ ...loanInputs, name: e.target.value });
-            }}
-          ></input>
-        </div>
-        {/* Phone Number */}
-        <div className="form-row">
-          <label>Phone number * </label>
-          <input
-            type="text"
-            value={loanInputs.phoneNumber}
-            onChange={(e) => {
-              setLoanInput({
-                ...loanInputs,
-                phoneNumber: e.target.value,
-              });
-            }}
-          ></input>
-        </div>
-        {/* Age */}
-        <div className="form-row">
-          <label>Age * </label>
-          <input
-            type="text"
-            value={loanInputs.age}
-            onChange={(e) => {
-              setLoanInput({
-                ...loanInputs,
-                age: e.target.value,
-              });
-            }}
-          ></input>
-        </div>
-        {/* Are you employee  */}
-        <div className="employee-check">
-          <input
-            type="checkbox"
-            checked={loanInputs.isEmployee}
-            onChange={(e) => {
-              setLoanInput({
-                ...loanInputs,
-                isEmployee: e.target.checked,
-              });
-            }}
-          ></input>
-          <label>Employee *</label>
-        </div>
-        {/* Salary */}
-        <div className="select-salary">
-          <label>Salary * </label>
-          <select
-            value={loanInputs.salaryRange}
-            onChange={(e) => {
-              setLoanInput({
-                ...loanInputs,
-                salaryRange: e.target.value,
-              });
-            }}
-          >
-            <option>Option1</option>
-            <option>Option2</option>
-            <option>Option3</option>
-          </select>
-        </div>
-        {/* HR */}
-        <hr></hr>
-        {/* Button */}
-        <button
-          className={btnIsDisabled ? "disabled" : ""}
-          disabled={btnIsDisabled}
-          onClick={handleFormSubmit}
-        >
-          Submit
-        </button>
-      </form>
-      {/* Modal */}
-      <Modal errorMessage={errorMessage} isVisible={showModal}></Modal>
-    </div>
+    <>
+      <PlaceImage place={place} imageSize={imageSize} />
+      <p>
+        <b>{place.name}</b>
+        {": " + place.description}
+      </p>
+    </>
+  );
+}
+
+function PlaceImage({ place, imageSize }) {
+  return (
+    <img
+      src={getImageUrl(place)}
+      alt={place.name}
+      width={imageSize}
+      height={imageSize}
+    />
   );
 }
