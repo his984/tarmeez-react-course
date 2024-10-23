@@ -1,11 +1,16 @@
 import "./App.css";
+import { Link } from "react-router-dom";
 
-export default function navbar() {
+export default function Navbar() {
   return (
     <div className="navbar">
       <h1>Navbar</h1>
-      <button>Home Page</button>
-      <button>Hello Page</button>
+      <Link to="/">
+        <button>Home Page</button>
+      </Link>
+      <Link to="/hello">
+        <button>Hello Page</button>
+      </Link>
     </div>
   );
 }
