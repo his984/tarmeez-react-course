@@ -12,9 +12,18 @@ button {
   width: 100px;
   height: 30px;
   display: block;
-}
+} 
 .navbar {
   background-color: teal;
   padding: 10px;
   display: flex;
 }
+.post {
+  background-color: aqua;
+  margin: 15px;
+  padding: 5px;
+  border: solid 1px black;
+  text-align: center;
+  width: 50%;
+  border-radius: 15px;
+} 

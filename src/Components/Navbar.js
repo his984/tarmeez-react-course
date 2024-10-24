@@ -1,15 +1,17 @@
-import "./App.css";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <div className="navbar">
       <h1>Navbar</h1>
+      {/* Link */}
       <Link to="/">
-        <button>Home Page</button>
+        {/* Posts Page */}
+        <button>Posts Page</button>
       </Link>
-      <Link to="/hello">
-        <button>Hello Page</button>
+      <Link to="/postDetails">
+        {/*Post Details */}
+        <button>Post Details</button>
       </Link>
     </div>
   );
