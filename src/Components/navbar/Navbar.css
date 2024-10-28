@@ -1,0 +1,52 @@
+nav {
+  background-color: #3c3d37;
+  display: flex;
+}
+/* Brand Style */
+.brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  padding-left: 50px;
+}
+.brand h1 {
+  margin: 0;
+  font-size: 25px;
+  color: white;
+}
+.icon {
+  font-size: 20px;
+  color: white;
+}
+/* //Brand// */
+
+/* ul */
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  width: 50%;
+  cursor: pointer;
+  color: white;
+}
+ul :hover {
+  background-color: #697565;
+  transition: background-color 0.4s ease;
+}
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.list {
+  display: flex;
+  justify-content: end;
+  width: 50%;
+}
