@@ -25,13 +25,13 @@ nav {
 /* ul */
 ul {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   list-style: none;
   margin: 0;
   width: 50%;
-  cursor: pointer;
   color: white;
+  padding-right: 50px;
 }
 ul :hover {
   background-color: #697565;
@@ -44,6 +44,7 @@ li {
   padding: 20px;
   font-size: 20px;
   color: white;
+  cursor: pointer;
 }
 
 .list {
@@ -53,4 +54,5 @@ li {
 }
 .link {
   text-decoration: none;
+  color: white;
 }

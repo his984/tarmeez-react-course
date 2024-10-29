@@ -1,8 +1,7 @@
 .post {
-  /* background-color: red; */
+  background-color: rgb(236, 233, 233);
   border: solid 1px black;
   margin-bottom: 10px;
-  width: 75%;
-  /* text-align: center; */
   padding: 15px;
+  cursor: pointer;
 }

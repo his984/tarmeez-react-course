@@ -10,15 +10,11 @@ export default function Navbar() {
       </div>
       <div className="list">
         <ul>
-          <Link className="link" to="/">
-            <li className="/">Home</li>
-          </Link>
-          <Link className="link" to="/posts">
-            <li className="posts-page">Posts Page</li>
-          </Link>
-          <Link className="link" to="/post-details">
-            <li className="post-details">Post Details</li>
-          </Link>
+          <li>
+            <Link className="link" to="/posts">
+              Posts
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>
