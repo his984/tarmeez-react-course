@@ -14,8 +14,9 @@ function App() {
         <Routes>
           <Route path="/posts" element={<Posts />} />
           <Route path="/post-details/:postId" element={<PostDetails />} />
+          <Route path="*" element={<h1>404 (Not Found !!)</h1>}></Route>
         </Routes>
-      </div>
+      </div>f
     </div>
   );
 }
