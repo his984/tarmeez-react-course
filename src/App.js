@@ -3,6 +3,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Posts from "./Components/Posts/Posts";
 import PostDetails from "./Components/postDetails/PostDetails";
+import MuButton  from "./MuButton"
 // APP
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <div className="container">
         {/* Navbar */}
         <Navbar />
+        <MuButton/>
         {/* Routes */}
         <Routes>
           <Route path="/posts" element={<Posts />} />
