@@ -16,7 +16,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
 // Task
-export default function Task() {
+export default function Task({ title, details }) {
   return (
     <>
       <Card
@@ -32,24 +32,18 @@ export default function Task() {
         className="task-card"
       >
         <CardContent>
-          <Grid container spacing={2}>
+          <Grid container spacing={5}>
             <Grid
               display="flex"
               flexDirection="column"
-              // alignItems="r"
               justifyContent="flex-start"
               size={8}
-              // backgroundColor="red"
             >
               <Typography variant="h5" component="h2">
-                Task Name
+                {title}
               </Typography>
-              <Typography
-                variant="h6"
-                component="h2"
-                style={{ fontSize: "17px" }}
-              >
-                Task Details
+              <Typography variant="body2" color="text.secondary">
+                {details}
               </Typography>
             </Grid>
             <Grid size={4}>
@@ -60,7 +54,7 @@ export default function Task() {
                   display: "flex",
                   flexDirection: "row",
                   alignItems: "center",
-                  justifyContent: "start",
+                  justifyContent: "space-around",
                   // backgroundColor:"green",
                   height: "100%",
                 }}
