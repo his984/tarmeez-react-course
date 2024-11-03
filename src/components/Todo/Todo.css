@@ -48,7 +48,7 @@ hr {
   border-radius: 5px;
   border: none;
 }
-/* input */
+/* div input */
 .input {
   display: flex;
   width: 100%;
@@ -56,10 +56,10 @@ hr {
   align-items: center;
   padding: 5px;
   box-sizing: border-box;
-  margin-top: 10px;
-  /* position: sticky;
-  bottom: 0;
-  background-color: aqua; */
+  margin-top:auto;
+  /* position: sticky; */
+  /* bottom: 0; */
+  /* background-color: aqua; */
 }
 .input button {
   width: 200px;

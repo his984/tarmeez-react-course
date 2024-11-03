@@ -6,12 +6,12 @@ import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
 // Task
-export default function Task({ title, details }) {
+export default function Task({ title }) {
   return (
     <div className="task-card">
       <div className="task-info">
         <h3>{title}</h3>
-        <p>{details}</p>
+        {/* <p>{details}</p> */}
       </div>
       <div className="action-buttons">
         <button style={{ border: "solid 2px green", color: "green" }}>
