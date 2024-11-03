@@ -1,14 +1,16 @@
-// Import Styles
+// Style
 import "./App.css";
-// Import Components
-import TodoList from "./Components/TodoList";
+// Components
+import Todo from "./components/Todo";
 
-// APP
 function App() {
   return (
-    <div className="App">
-      <TodoList />
+    <div className="container">
+      <div className="App">
+        <Todo />
+      </div>
     </div>
   );
 }
+
 export default App;
