@@ -10,7 +10,9 @@ export default function Todo() {
   const [titleInput, setTitleInput] = useState("");
   const task = todos.map((task) => {
     // console.log(task.id);
-    return <Task key={task.id} title={task.title}></Task>;
+    return (
+      <Task key={task.id} task={task} handleCheck={handleCheckClick}></Task>
+    );
   });
   function handleAddClick() {
     // Check if input is empty
@@ -26,6 +28,17 @@ export default function Todo() {
     };
     setTodos([...todos, newTask]);
     setTitleInput("");
+  }
+  // function handleCheckClick
+  function handleCheckClick(todoId) {
+    setTodos(
+      todos.map((t) => {
+        if (t.id === todoId) {
+          t.isComplied = !t.isComplied;
+        }
+        return t;
+      })
+    );
   }
   return (
     <div className="todo-card">

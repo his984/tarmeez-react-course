@@ -56,7 +56,7 @@ hr {
   align-items: center;
   padding: 5px;
   box-sizing: border-box;
-  margin-top:auto;
+  margin-top: auto;
   /* position: sticky; */
   /* bottom: 0; */
   /* background-color: aqua; */
@@ -69,7 +69,7 @@ hr {
   border: none;
 }
 .input input {
-  width: 290px;
+  width: 300px;
   border-radius: 10px;
   border: solid 1px black;
   padding: 10px;
