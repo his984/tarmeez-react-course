@@ -2,6 +2,7 @@ import "./Task.css";
 import "../../App.css";
 import { TodosContext } from "../../context/todosContext";
 import { useContext, useState } from "react";
+import EditFormDialog from "../EditFormDialog/EditFormDialog";
 
 // Icons
 import { FaCheck } from "react-icons/fa";
@@ -13,6 +14,7 @@ import AlertDialog from "../AlertDialog/AlertDialog";
 export default function Task({ task }) {
   const { todos, setTodos } = useContext(TodosContext);
   const [open, setOpen] = useState(false);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   // Handle Check
   function handleCheckClick() {
     setTodos(
@@ -29,6 +31,18 @@ export default function Task({ task }) {
     const updatedTodos = todos.filter((t) => t.id !== task.id);
     setTodos(updatedTodos);
   }
+  // Handle Edit
+  const handleEditSubmit = (newTitle) => {
+    setTodos(
+      todos.map((t) => {
+        if (t.id === task.id) {
+          t.title = newTitle;
+        }
+        return t;
+      })
+    );
+    setIsEditDialogOpen(false); // إغلاق نافذة التحرير بعد التعديل
+  };
 
   return (
     <div className="task-card">
@@ -48,9 +62,18 @@ export default function Task({ task }) {
           <FaCheck />
         </button>
         {/* Edit */}
-        <button style={{ border: "solid 1px blue", color: "blue" }}>
+        <button
+          style={{ border: "solid 1px blue", color: "blue" }}
+          onClick={() => setIsEditDialogOpen(true)}
+        >
           <MdEdit />
         </button>
+        <EditFormDialog
+          open={isEditDialogOpen}
+          setOpen={setIsEditDialogOpen}
+          currentTitle={task.title}
+          onSubmit={handleEditSubmit}
+        />
         {/* Delete */}
         <button
           style={{ border: "solid 1px red", color: "red" }}

@@ -3,7 +3,7 @@ import Todo from "./components/Todo/Todo";
 import { TodosContext } from "./context/todosContext";
 import { tasks } from "./data";
 import { useState } from "react";
-
+import EditFormDialog from "./components/EditFormDialog/EditFormDialog";
 // App
 function App() {
   const [todos, setTodos] = useState(tasks);
@@ -13,6 +13,7 @@ function App() {
         <div className="App">
           <Todo />
         </div>
+        <EditFormDialog />
       </div>
     </TodosContext.Provider>
   );
