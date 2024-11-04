@@ -3,6 +3,7 @@ import Todo from "./components/Todo/Todo";
 import { TodosContext } from "./context/todosContext";
 import { tasks } from "./data";
 import { useState } from "react";
+
 // App
 function App() {
   const [todos, setTodos] = useState(tasks);

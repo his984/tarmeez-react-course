@@ -1,16 +1,18 @@
 import "./Task.css";
 import "../../App.css";
 import { TodosContext } from "../../context/todosContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 // Icons
 import { FaCheck } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import AlertDialog from "../AlertDialog/AlertDialog";
 
 // Task
 export default function Task({ task }) {
   const { todos, setTodos } = useContext(TodosContext);
+  const [open, setOpen] = useState(false);
   // Handle Check
   function handleCheckClick() {
     setTodos(
@@ -52,10 +54,16 @@ export default function Task({ task }) {
         {/* Delete */}
         <button
           style={{ border: "solid 1px red", color: "red" }}
-          onClick={handleDeleteClick}
+          onClick={() => setOpen(true)}
         >
           <MdDelete />
         </button>
+        <AlertDialog
+          open={open}
+          setOpen={setOpen}
+          onConfirm={handleDeleteClick}
+          message="Are you sure you want to delete this task?"
+        />
       </div>
     </div>
   );
